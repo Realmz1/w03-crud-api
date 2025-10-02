@@ -22,7 +22,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/authors", authorRoutes);
 
 connectDB().then(() => {
-  app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:8080`));
 }).catch(err => {
   console.error("❌ Failed to connect to DB:", err);
   process.exit(1);
