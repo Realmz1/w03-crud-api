@@ -11,10 +11,10 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:8080",
+        url: "https://w03-crud-api-0yjb.onrender.com",
       },
       {
-        url: "https://YOUR-RENDER-APP.onrender.com" // replace with your Render link later
+        url: "http://localhost:8080" 
       }
     ],
   },
