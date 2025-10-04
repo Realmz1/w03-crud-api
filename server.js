@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./db/connect.js";
 import bookRoutes from "./routes/books.js";
 import authorRoutes from "./routes/authors.js";
+import { swaggerDocs } from "./swagger.js";  // ✅ Import swagger
 
 dotenv.config();
 const app = express();
@@ -14,16 +15,25 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
+// Base route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the W03 CRUD API" });
 });
 
-app.use("/api/books", bookRoutes);
+// API routes
 app.use("/api/authors", authorRoutes);
+app.use("/api/books", bookRoutes);
 
-connectDB().then(() => {
-  app.listen(PORT, () => console.log(`🚀 Server running on http://localhost ${PORT}`));
-}).catch(err => {
-  console.error("❌ Failed to connect to DB:", err);
-  process.exit(1);
-});
+// Swagger docs route
+swaggerDocs(app);
+
+connectDB()
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`🚀 Server running on http://localhost:${PORT}`)
+    );
+  })
+  .catch((err) => {
+    console.error("❌ Failed to connect to DB:", err);
+    process.exit(1);
+  });
