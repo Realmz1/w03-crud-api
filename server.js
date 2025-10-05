@@ -6,6 +6,7 @@ import { connectDB } from "./db/connect.js";
 import bookRoutes from "./routes/books.js";
 import authorRoutes from "./routes/authors.js";
 import { swaggerDocs } from "./swagger.js";  // ✅ Import swagger
+import contactRoutes from "./routes/contacts.js";
 
 dotenv.config();
 const app = express();
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use("/api/contacts", contactRoutes);
 
 // Base route
 app.get("/", (req, res) => {
