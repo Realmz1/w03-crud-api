@@ -1,4 +1,5 @@
 import express from "express";
+import { authMiddleware } from "../controllers/authController.js";
 import { getContacts, getContact, createContact, updateContact, deleteContact } from "../controllers/contactsController.js";
 
 const router = express.Router();

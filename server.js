@@ -7,6 +7,7 @@ import bookRoutes from "./routes/books.js";
 import authorRoutes from "./routes/authors.js";
 import { swaggerDocs } from "./swagger.js";  // ✅ Import swagger
 import contactRoutes from "./routes/contacts.js";
+import authRoutes from "./routes/auth.js";
 
 dotenv.config();
 const app = express();
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api/contacts", contactRoutes);
+app.use("/api/auth", authRoutes);
 
 // Base route
 app.get("/", (req, res) => {
